@@ -5,9 +5,11 @@
 //  Created by Asset Ryskul on 11.08.2022.
 //
 
+import Foundation
 import Alamofire
 
 class BaseNetwork: AbstractRequestFactory {
+    
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
@@ -19,4 +21,5 @@ class BaseNetwork: AbstractRequestFactory {
         self.sessionManager = sessionManager
         self.queue = queue
     }
+    
 }

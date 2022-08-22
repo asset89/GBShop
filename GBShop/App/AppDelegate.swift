@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  GBShop
 //
-//  Created by Asset Ryskul on 08.08.2022.
+//  Created by Asset Ryskul on 13.04.2022.
 //
 
 import UIKit
@@ -10,10 +10,19 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    let requestFactory = RequestFactory()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let auth = requestFactory.makeAuthRequestFatory()
+        auth.login(userName: "Somebody", password: "mypassword") { response in
+            switch response.result {
+            case .success(let login):
+                print(login)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
         return true
     }
 
